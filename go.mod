@@ -5,7 +5,7 @@ go 1.19
 require gorm.io/driver/mysql v1.4.4
 
 require (
-	github.com/aws/aws-sdk-go v1.44.159 // indirect
+	
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
