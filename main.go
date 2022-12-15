@@ -20,6 +20,7 @@ func main() {
 	factory.InitFactory(e, db)
 	e.Pre(middleware.RemoveTrailingSlash())
 	e.Use(middleware.CORS())
+	e.Use(middleware.LoggerWithConfig(middleware.DefaultLoggerConfig))
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", cfg.SERVER_PORT)))
 }
 

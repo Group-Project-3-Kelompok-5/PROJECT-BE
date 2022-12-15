@@ -14,6 +14,10 @@ import (
 	userRepo "be13/project/features/user/repository"
 	userService "be13/project/features/user/service"
 
+	deliveryBooking "be13/project/features/reserve/delivery"
+	repositoryBooking "be13/project/features/reserve/repository"
+	serviceBooking "be13/project/features/reserve/service"
+
 	"github.com/labstack/echo/v4"
 	"gorm.io/gorm"
 )
@@ -22,6 +26,10 @@ func InitFactory(e *echo.Echo, db *gorm.DB) {
 	userRepofaktory := userRepo.New(db) //menginiasialisasi func new yang ada di repository
 	userServiceFaktory := userService.New(userRepofaktory)
 	userDelivery.New(userServiceFaktory, e)
+
+	dataBooking := repositoryBooking.New(db)
+	serviceBooking := serviceBooking.New(dataBooking)
+	deliveryBooking.New(e, serviceBooking)
 
 	authRepoFactory := repoAuth.NewAuth(db)
 	authServiceFactory := serviceAuth.NewAuth(authRepoFactory)
